@@ -18,7 +18,9 @@ const middleware = [...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
     }
-  }), logger]
+  }), 
+  logger
+]
 
 const store = configureStore({
     reducer:{

@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import  PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import phonebookOperations from './../../redux/phonebook/phonebook-operations';
-import phonebookSelectors from './../../redux/phonebook/phonebook-selectors';
+// import phonebookOperations from './../../redux/phonebook/phonebook-operations';
+// import phonebookSelectors from './../../redux/phonebook/phonebook-selectors';
+
+import {phonebookOperations, phonebookSelectors} from './../../redux/phonebook';
 
 const ContactList = ({loading, contacts, fetchContacts, removeContactId }) => {
 

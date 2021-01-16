@@ -6,9 +6,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { connect } from 'react-redux';
-import phonebookActions from './../../redux/phonebook/phonebook-actions';
-import phonebookOperations from './../../redux/phonebook/phonebook-operations';
-import phonebookSelectors from './../../redux/phonebook/phonebook-selectors';
+
+// import phonebookOperations from './../../redux/phonebook/phonebook-operations';
+// import phonebookSelectors from './../../redux/phonebook/phonebook-selectors';
+
+import {phonebookOperations, phonebookSelectors} from './../../redux/phonebook'
 
 
 const INITIAL_STATE = {
