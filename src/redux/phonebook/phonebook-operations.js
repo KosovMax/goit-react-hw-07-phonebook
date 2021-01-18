@@ -6,6 +6,7 @@ import {
     addContactRequest,
     addContactSuccess,
     addContactError,
+    findContactName,
     deleteContactRequest,
     deleteContactSuccess,
     deleteContactError } from './phonebook-actions';
@@ -51,8 +52,17 @@ const deleteContact = id => async dispatch => {
 
 }
 
+const onFindName = name => (dispatch, getState) =>{
+    const { phonebook: {contacts}} = getState();
+
+    return contacts.filter(contact => contact.name === name)
+}
+
+
+
 export default{
     fetchContact,
     addContact,
-    deleteContact
+    deleteContact,
+    onFindName
 }

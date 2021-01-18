@@ -18,7 +18,7 @@ const INITIAL_STATE = {
     phone:""
 }
 
-const ContactForm = ({ contacts, onAddContact }) => {
+const ContactForm = ({ onFindName, onAddContact }) => {
 
     const [state, setState] = useState({...INITIAL_STATE})
     const {name, phone} = state;
@@ -47,6 +47,8 @@ const ContactForm = ({ contacts, onAddContact }) => {
             return false; 
         }
 
+        console.log(onFindName(name));
+
         if(onFindName(name).length !== 0){
             toast.warn(name + ' is already in contacts.', {
                 position: "top-left",
@@ -70,10 +72,6 @@ const ContactForm = ({ contacts, onAddContact }) => {
         setState({ ...INITIAL_STATE });
     };
 
-    const onFindName = (name) =>{
-        return contacts.filter(contact => contact.name === name)
-    }
-
     return (
         <>
         <form className="phonebook" onSubmit={handleSubmit}>
@@ -94,20 +92,18 @@ const ContactForm = ({ contacts, onAddContact }) => {
 }
 
 ContactForm.defaultProps = {
-    contacts:[],
-    onAddContact:()=>{}
+    onAddContact:() => {},
+    onFindName:() => {}
 }
 
 ContactForm.propTypes = {
-    contacts: PropTypes.array.isRequired,
-    onAddContact:PropTypes.func
+    onAddContact:PropTypes.func,
+    onFindName:PropTypes.func
 }
  
-const mapStateToProps = state => ({
-    contacts:phonebookSelectors.getContacts(state)
-})
 
 const mapDispatchToProps = dispatch => ({
     onAddContact: (name, phone) => dispatch(phonebookOperations.addContact(name, phone)),
+    onFindName: (name) => dispatch(phonebookOperations.onFindName(name))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
+export default connect(null, mapDispatchToProps)(ContactForm)
